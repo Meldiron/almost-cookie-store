@@ -1,0 +1,108 @@
+{
+    "projectId": "cookieShop",
+    "projectName": "cookieShop",
+    "functions": [
+        {
+            "$id": "createPayment",
+            "name": "createPayment",
+            "runtime": "node-16.0",
+            "path": "functions/createPayment",
+            "entrypoint": "src/index.js",
+            "execute": [
+                "role:all"
+            ],
+            "timeout": 10
+        },
+        {
+            "$id": "updatePayment",
+            "name": "updatePayment",
+            "runtime": "node-16.0",
+            "path": "functions/updatePayment",
+            "entrypoint": "src/index.js",
+            "execute": [],
+            "timeout": 10
+        }
+    ],
+    "collections": [
+        {
+            "$id": "orders",
+            "$read": [],
+            "$write": [],
+            "name": "Orders",
+            "enabled": true,
+            "permission": "document",
+            "attributes": [
+                {
+                    "key": "status",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "userId",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "packId",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "paymentId",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "createdAt",
+                    "type": "integer",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "min": -9223372036854776000,
+                    "max": 9223372036854776000,
+                    "default": null
+                }
+            ],
+            "indexes": [
+                {
+                    "key": "paymentIdASC",
+                    "type": "key",
+                    "status": "available",
+                    "attributes": [
+                        "paymentId"
+                    ],
+                    "orders": [
+                        "ASC"
+                    ]
+                },
+                {
+                    "key": "createdAtASC",
+                    "type": "key",
+                    "status": "available",
+                    "attributes": [
+                        "createdAt"
+                    ],
+                    "orders": [
+                        "ASC"
+                    ]
+                }
+            ]
+        }
+    ]
+}
