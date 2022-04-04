@@ -32,11 +32,7 @@ export const AppwriteService = {
     },
 
     async login(): Promise<void> {
-        await sdk.account.createOAuth2Session(
-            "discord",
-            `${appUrl}/app`,
-            `${appUrl}/login`
-        );
+        await sdk.account.createAnonymousSession();
     },
 
     async getAuthStatus(): Promise<boolean> {
